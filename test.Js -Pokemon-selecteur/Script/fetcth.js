@@ -2,6 +2,9 @@ console.log("script chargé");
 
 const selectElement = document.querySelector("select");
 const detailsButton = document.querySelector("#details");
+const retourButton = document.querySelector("#retour");
+
+
 
 function NomPokemon() {
   const Api = `https://pokebuildapi.fr/api/v1/pokemon/`;
@@ -61,6 +64,13 @@ function getValues(event) {
 
 
       detailsButton.addEventListener("click", () => {
+       
+
+        const main= document.getElementById("main");
+
+        while (main.firstChild) {
+          main.removeChild(main.firstChild);
+        }
         
         const statsApi = `https://pokebuildapi.fr/api/v1/pokemon/${selectedPokemon}/`;
         
@@ -69,10 +79,9 @@ function getValues(event) {
           .then((statsData) => {
             // Traitez les données des statistiques ici
 
-            //..........................
-            const main= document.getElementById("main")
+        
 
-            const option3 = document.createElement("div");
+            const option3 = document.createElement("h1");
             option3.textContent =("Les statistique :");
             main.appendChild(option3);
            
@@ -107,7 +116,11 @@ function getValues(event) {
 
             //............................
             console.log(statsData.stats.HP);
-            // Vous pouvez afficher les statistiques comme vous le souhaitez
+           
+            console.log("Le bouton retour est censé être visible maintenant.");
+            
+          retourButton.style.visibility = "visible";
+
            
           });
       });
@@ -116,3 +129,11 @@ function getValues(event) {
 
 const FElement = document.querySelector("form");
 FElement.addEventListener("submit", getValues);
+
+// Modifiez l'écouteur d'événements du bouton "retour" pour qu'il ne soit visible que si les statistiques sont affichées
+retourButton.addEventListener("click", () => {
+
+  window.location.href = "index.html";
+ 
+ 
+});
