@@ -61,8 +61,22 @@ function getDetails(pokemon) {
 
             console.log("Le bouton retour est censé être visible maintenant.");
 
-            retourButton.style.visibility = "visible";
+            const retourButton = document.createElement("button");
+            retourButton.textContent =  "Retour";
+            main.style.textAlign = "center"
+            retourButton.style.marginTop = "15px"
+            main.appendChild(retourButton);
+          
+            retourButton.addEventListener("click", (event) => {
+              event.preventDefault();
+              window.location.href = "index.html";
+            });
+            
 }
+
+   
+
+
 function getValues(url, param, nomPokemon) {
   // const selectedPokemon = selectElement.value;
 
@@ -98,6 +112,7 @@ function getValues(url, param, nomPokemon) {
 
       document.querySelector("#details").style.visibility = "visible";
 
+     
       detailsButton.addEventListener("click", () => {
         const main = document.getElementById("main");
 
@@ -105,6 +120,8 @@ function getValues(url, param, nomPokemon) {
           main.removeChild(main.firstChild);
         }
         getDetails(pokemon);
+
+
         // const statsApi = `https://pokebuildapi.fr/api/v1/pokemon/${selectedPokemon}/`;
 
         // fetch(statsApi)
@@ -178,8 +195,5 @@ document.forms[0].addEventListener("submit", (event) => {
 });
 
 // Modifiez l'écouteur d'événements du bouton "retour" pour qu'il ne soit visible que si les statistiques sont affichées
-retourButton.addEventListener("click", () => {
-  window.location.href = "index.html";
-});
 
 
