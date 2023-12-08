@@ -83,7 +83,7 @@ function getValues(url, param, nomPokemon) {
   // const Api2 = `https://pokebuildapi.fr/api/v1/pokemon/${selectedPokemon}`;
   // const Apiurl = "https://pokebuildapi.fr/api/v1/pokemon/".$pokemon;
 
-  //liaison api pokemon//
+  // liaison api pokemon//
 
   fetch(url, param)
     .then((response) => response.json())
